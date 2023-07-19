@@ -16,7 +16,7 @@
 	<div id="alerr" style="background:rgba(51,51,51,0.8); color:#FFF; min-height:100px; width:300px; position:fixed; display:none; z-index:9999; overflow:auto;">
 		<pre id="ssaa"></pre>
 	</div>
-	<iframe name="back" style="display:none;"></iframe>
+	
 	<div id="all">
 		<div id="title">
 			<?=date("m 月 d 號 l");?> | 今日瀏覽:<?=$Viewer->todayViewer();?>  | 累積瀏覽: <?=$Viewer->totalViewer();?> 
@@ -34,13 +34,13 @@
 				<a class="blo" href="?do=que">問卷調查</a>
 			</div>
 			<div class="hal" id="main">
-				<div>
-
-					<span style="width:18%; display:inline-block;">
+				<div style="display:flex">
+					<marquee style="width:75%">請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章</marquee>
+					<span style="width:25%; display:inline-block;">
 						<a href="?do=login">會員登入</a>
 					</span>
-					<div class="">
-					</div>
+				</div>
+				<div class="">
 				</div>
 			</div>
 		</div>
