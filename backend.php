@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<?php include_once "base.php";?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039) -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -15,10 +16,10 @@
 	<div id="alerr" style="background:rgba(51,51,51,0.8); color:#FFF; min-height:100px; width:300px; position:fixed; display:none; z-index:9999; overflow:auto;">
 		<pre id="ssaa"></pre>
 	</div>
-	<iframe name="back" style="display:none;"></iframe>
+	
 	<div id="all">
 		<div id="title">
-			<?=date("m 月 d 號 l");?> | 今日瀏覽: 1 | 累積瀏覽: 36 
+			<?=date("m 月 d 號 l");?> | 今日瀏覽:<?=$Viewer->todayViewer();?>  | 累積瀏覽: <?=$Viewer->totalViewer();?> 
 			<a href='index.php' style='float:right'>回首頁</a>
 		</div>
 		<div id="title2">
@@ -26,20 +27,48 @@
 		</div>
 		<div id="mm">
 			<div class="hal" id="lef">
+				<a class="blo" href="?do=admin">帳號管理</a>
 				<a class="blo" href="?do=po">分類網誌</a>
-				<a class="blo" href="?do=news">最新文章</a>
-				<a class="blo" href="?do=pop">人氣文章</a>
-				<a class="blo" href="?do=know">講座訊息</a>
-				<a class="blo" href="?do=que">問卷調查</a>
+				<a class="blo" href="?do=news">最新文章管理</a>
+				<a class="blo" href="?do=know">講座管理</a>
+				<a class="blo" href="?do=que">問卷管理</a>
 			</div>
 			<div class="hal" id="main">
-				<div>
-
-					<span style="width:18%; display:inline-block;">
-						<a href="?do=login">會員登入</a>
+				<div style="display:flex">
+					<marquee style="width:75%">請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章</marquee>
+					<span style="width:25%; display:inline-block;">
+						<?php
+						if(isset($_SESSION['user'])){
+						?>
+							歡迎，<?=$_SESSION['user'];?>
+							<?php
+								if($_SESSION['user']=='admin'){
+									echo "<button onclick='location.href=&#39;backend.php&#39;'>";
+									echo "管理";
+									echo "</button>";
+								}
+							?>
+							<button onclick="location.href='./api/logout.php'">登出</button>
+						<?php
+						}else{
+						?>
+							<a href="?do=login">會員登入</a>
+						<?php
+							}
+						?>
 					</span>
-					<div class="">
-					</div>
+				</div>
+				<div class="">
+				<?php
+					$do=$_GET['do']??'main';
+					$file="./view/front/".$do.".php";
+					if(file_exists($file)){
+						include $file;
+					}else{
+						include "./view/front/main.php";
+					}
+
+				?>
 				</div>
 			</div>
 		</div>

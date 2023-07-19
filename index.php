@@ -37,7 +37,25 @@
 				<div style="display:flex">
 					<marquee style="width:75%">請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章</marquee>
 					<span style="width:25%; display:inline-block;">
-						<a href="?do=login">會員登入</a>
+						<?php
+						if(isset($_SESSION['user'])){
+						?>
+							歡迎，<?=$_SESSION['user'];?>
+							<?php
+								if($_SESSION['user']=='admin'){
+									echo "<button onclick='location.href=&#39;backend.php&#39;'>";
+									echo "管理";
+									echo "</button>";
+								}
+							?>
+							<button onclick="location.href='./api/logout.php'">登出</button>
+						<?php
+						}else{
+						?>
+							<a href="?do=login">會員登入</a>
+						<?php
+							}
+						?>
 					</span>
 				</div>
 				<div class="">
