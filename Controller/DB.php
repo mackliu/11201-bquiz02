@@ -2,7 +2,7 @@
 
 class DB{
     protected $table;
-    protected $dsn="mysql:host=localhost;charset=utf8;dbname=web04";
+    protected $dsn="mysql:host=localhost;charset=utf8;dbname=db04";
     protected $links;
     protected $pdo;
 
