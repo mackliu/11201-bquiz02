@@ -41,6 +41,16 @@
 					</span>
 				</div>
 				<div class="">
+				<?php
+					$do=$_GET['do']??'main';
+					$file="./view/front/".$do.".php";
+					if(file_exists($file)){
+						include $file;
+					}else{
+						include "./view/front/main.php";
+					}
+
+				?>
 				</div>
 			</div>
 		</div>
