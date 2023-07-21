@@ -11,9 +11,11 @@
     margin-left:-1px;
     text-align: center;
     cursor: pointer;
+    border-radius:7px 7px 0 0;
   }
   .active-tab{
     background:white;
+    border-bottom:1px solid white;
   }
   .post{
     border:1px solid black;
