@@ -25,4 +25,12 @@ class User extends DB{
     function chk_pw($user){
         return $this->count($user);
     }
+
+    function backend(){
+        $data=[
+            'rows'=>$this->all(),  
+        ];
+
+        $this->view("./view/backend/user.php",$data);
+    }
 }
