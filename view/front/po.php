@@ -28,7 +28,15 @@ $(".cat").on("click",function(){
 
 function getList(type){
     $.get("./api/get_list.php",{type},(list)=>{
+        $("#post").html("")
         $("#lists").html(list)
+    })
+}
+
+function getPost(id){
+    $.get("./api/get_post.php",{id},(post)=>{
+        $("#lists").html("");
+        $("#post").html(post)
     })
 }
 </script>
