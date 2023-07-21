@@ -4,6 +4,7 @@ session_start();
 
 include_once __DIR__ . "/Controller/Viewer.php";
 include_once __DIR__ . "/Controller/User.php";
+include_once __DIR__ . "/Controller/News.php";
 
 function to($url){
     header("location:".$url);
@@ -11,3 +12,4 @@ function to($url){
 
 $Viewer=new Viewer;
 $User=new User;
+$News=new News;

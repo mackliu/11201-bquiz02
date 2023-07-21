@@ -117,7 +117,8 @@ class DB{
             'pages'=>$pages,
             'now'=>$now,
             'start'=>$start,
-            'table'=>$this->table
+            'table'=>$this->table,
+            'num'=>$num
         ];
         return $rows;
     }
@@ -129,12 +130,12 @@ class DB{
             $html .= "<a href='?do=$this->table&p=$prev'> &lt; </a>";
         }
 
-        for($i=1 ;$i < $this->links['pages'];$i++){
+        for($i=1 ;$i <= $this->links['pages'];$i++){
             $fontsize=($i==$this->links['now'])?"24px":"16px";
             $html .= "<a href='?do=$this->table&p=$i' style='font-size:$fontsize'> $i </a>";
         }
 
-        if($this->links['now']+1 <= $this->links['$pages']){
+        if($this->links['now']+1 <= $this->links['pages']){
             $next=$this->links['now']+1;
             $html .= "<a href='?do=$this->table&p=$next'> &gt; </a>";
         }
