@@ -105,13 +105,13 @@ class DB{
         include($path);
     }
 
-    function paginate($num,$arg=null){
-        $total=$this->count($arg);
+    function paginate($num,$arg=null,$arg2=null){
+        $total=$this->count($arg,$arg2);
         $pages=ceil($total/$num);
         $now=$_GET['p']??1;
         $start=($now-1)*$num;
 
-        $rows=$this->all($arg," limit $start,$num");
+        $rows=$this->all($arg,$arg2 . " limit $start,$num");
         $this->links=[
             'total'=>$total,
             'pages'=>$pages,
