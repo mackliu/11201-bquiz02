@@ -1,5 +1,5 @@
-<form action="./api/news_admin" method='post'>
-<table class="ct">
+<form action="./api/news_admin.php" method='post'>
+<table class="ct" style="width:75%;margin:auto">
     <tr>
         <td>編號</td>
         <td>標題</td>
@@ -19,10 +19,15 @@
             <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
 
         </td>
+        <input type="hidden" name="id[]" value="<?=$row['id'];?>">
     </tr>
     <?php
     }
     ?>
 </table>
 <div class="ct"><?=$links;?></div>
+
+<div class="ct">
+    <input type="submit" value="確定修改">
+</div>
 </form>

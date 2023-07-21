@@ -63,7 +63,7 @@
 					$do=$_GET['do']??'main';
 					$table=ucfirst($do);
 					$file="./view/backend/".$do.".php";
-					if(file_exists($file)){
+					if(file_exists($file) && $do!='main'){
 						$$table->backend();
 					}else{
 						include "./view/backend/main.php";
