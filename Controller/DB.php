@@ -50,7 +50,6 @@ class DB{
             $keys=array_keys($arg);
             $sql="insert into $this->table (`".join("`,`",$keys)."`) values('".join("','",$arg)."')";
         }
-
         return $this->pdo->exec($sql);
     }
 

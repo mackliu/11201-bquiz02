@@ -29,3 +29,29 @@
         </table>
     </div>
 </fieldset>
+
+<script>
+function reg(){
+let info={
+    acc:$("#acc").val(),
+    pw:$("#pw").val(),
+    pw2:$("#pw2").val(),
+    email:$("#email").val(),
+}
+if(info.acc=='' || info.pw=='' || info.pw2=='' || info.email==''){
+    alert("不可空白");
+}else if(info.pw!=info.pw2){
+    alert("密碼錯誤");
+}else{
+    $.post("./api/chk_acc.php",{acc:info.acc},(res)=>{
+        if(parseInt(res)!==0){
+            alert("帳號重複");
+        }else{
+            $.post("./api/reg.php",info,()=>{
+                alert("註冊完成，歡迎加入")
+            })
+        }
+    })
+}
+}
+</script>
