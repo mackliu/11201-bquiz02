@@ -41,7 +41,7 @@
     }
     ?>        
     </table>
-    <div><?=$News->links();?></div>
+    <div><?=$News->links("pop");?></div>
 </fieldset>
 <script>
     $(".title,.content").hover(
