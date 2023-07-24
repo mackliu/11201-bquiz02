@@ -1,4 +1,4 @@
-﻿<?php include_once "base.php";?>
+﻿<?php include_once "base.php"; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039) -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,16 +10,28 @@
 	<link href="./css/css.css" rel="stylesheet" type="text/css">
 	<script src="./js/jquery-1.9.1.min.js"></script>
 	<script src="./js/js.js"></script>
+	<style>
+		.all {
+			background: rgba(51, 51, 51, 0.8);
+			color: #FFF;
+			min-height: 100px;
+			width: 300px;
+			position: fixed;
+			display: none;
+			z-index: 9999;
+			overflow: auto;
+			padding: 15px;
+    		border-radius: 10px;
+    		box-shadow: 2px 2px 10px #999;
+    		height: 400px;			
+		}
+	</style>
 </head>
 
 <body>
-	<div id="alerr" style="background:rgba(51,51,51,0.8); color:#FFF; min-height:100px; width:300px; position:fixed; display:none; z-index:9999; overflow:auto;">
-		<pre id="ssaa"></pre>
-	</div>
-	
 	<div id="all">
 		<div id="title">
-			<?=date("m 月 d 號 l");?> | 今日瀏覽:<?=$Viewer->todayViewer();?>  | 累積瀏覽: <?=$Viewer->totalViewer();?> 
+			<?= date("m 月 d 號 l"); ?> | 今日瀏覽:<?= $Viewer->todayViewer(); ?> | 累積瀏覽: <?= $Viewer->totalViewer(); ?>
 			<a href='index.php' style='float:right'>回首頁</a>
 		</div>
 		<div id="title2">
@@ -38,37 +50,37 @@
 					<marquee style="width:75%">請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章</marquee>
 					<span style="width:25%; display:inline-block;">
 						<?php
-						if(isset($_SESSION['user'])){
+						if (isset($_SESSION['user'])) {
 						?>
-							歡迎，<?=$_SESSION['user'];?>
+							歡迎，<?= $_SESSION['user']; ?>
 							<?php
-								if($_SESSION['user']=='admin'){
-									echo "<button onclick='location.href=&#39;backend.php&#39;'>";
-									echo "管理";
-									echo "</button>";
-								}
+							if ($_SESSION['user'] == 'admin') {
+								echo "<button onclick='location.href=&#39;backend.php&#39;'>";
+								echo "管理";
+								echo "</button>";
+							}
 							?>
 							<button onclick="location.href='./api/logout.php'">登出</button>
 						<?php
-						}else{
+						} else {
 						?>
 							<a href="?do=login">會員登入</a>
 						<?php
-							}
+						}
 						?>
 					</span>
 				</div>
 				<div class="">
-				<?php
-					$do=$_GET['do']??'main';
-					$file="./view/front/".$do.".php";
-					if(file_exists($file)){
+					<?php
+					$do = $_GET['do'] ?? 'main';
+					$file = "./view/front/" . $do . ".php";
+					if (file_exists($file)) {
 						include $file;
-					}else{
+					} else {
 						include "./view/front/main.php";
 					}
 
-				?>
+					?>
 				</div>
 			</div>
 		</div>
