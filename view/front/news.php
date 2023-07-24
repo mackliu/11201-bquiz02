@@ -11,8 +11,11 @@
     foreach($rows as $row){
     ?>        
         <tr>
-            <td width="30%"><?=$row['title'];?></td>
-            <td width="40%"><?=mb_substr($row['text'],0,25);?>...</td>
+            <td width="30%" class='title'><?=$row['title'];?></td>
+            <td width="40%" class='content'>
+                <div class='short'><?=mb_substr($row['text'],0,25);?>...</div>
+                <div class="all" style="display:none"><?=$row['text'];?></div>
+            </td>
             <td></td>
         </tr>
     <?php
@@ -21,3 +24,8 @@
     </table>
     <div><?=$News->links();?></div>
 </fieldset>
+<script>
+    $(".title,.content").on("click",function(){
+        $(this).parent().find(".short,.all").toggle()
+    })
+</script>
