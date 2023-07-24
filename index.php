@@ -10,22 +10,7 @@
 	<link href="./css/css.css" rel="stylesheet" type="text/css">
 	<script src="./js/jquery-1.9.1.min.js"></script>
 	<script src="./js/js.js"></script>
-	<style>
-		.all {
-			background: rgba(51, 51, 51, 0.8);
-			color: #FFF;
-			min-height: 100px;
-			width: 300px;
-			position: fixed;
-			display: none;
-			z-index: 9999;
-			overflow: auto;
-			padding: 15px;
-    		border-radius: 10px;
-    		box-shadow: 2px 2px 10px #999;
-    		height: 400px;			
-		}
-	</style>
+
 </head>
 
 <body>
