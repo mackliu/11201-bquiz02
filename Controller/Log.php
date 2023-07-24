@@ -7,4 +7,12 @@ class Log extends DB{
         parent::__construct('log');
     }
       
+    function showGoods($news){
+        $chk=$this->count(['user'=>$_SESSION['user'],'news'=>$news]);
+        if($chk>0){
+            return "收回讚";
+        }else{
+            return "讚";
+        }
+    }
 }

@@ -35,7 +35,15 @@
                     <div><?=$row['text'];?></div>
                 </div>
             </td>
-            <td></td>
+            <td>
+            <?php
+            if(isset($_SESSION['user'])){
+                echo "-<a href='#' class='goods' data-id='{$row['id']}'>";
+                echo $Log->showGoods($row['id']);
+                echo "</a>";
+            }
+            ?>                
+            </td>
         </tr>
     <?php
     }

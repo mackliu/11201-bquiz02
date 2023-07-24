@@ -19,7 +19,9 @@
             <td>
             <?php
             if(isset($_SESSION['user'])){
-                echo "<a href='#' class='goods' data-id='{$row['id']}'>讚</a>";
+                echo "<a href='#' class='goods' data-id='{$row['id']}'>";
+                echo $Log->showGoods($row['id']);
+                echo "</a>";
             }
             ?>
             </td>
