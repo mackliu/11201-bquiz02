@@ -16,7 +16,13 @@
                 <div class='short'><?=mb_substr($row['text'],0,25);?>...</div>
                 <div class="all" style="display:none"><?=$row['text'];?></div>
             </td>
-            <td></td>
+            <td>
+            <?php
+            if(isset($_SESSION['user'])){
+                echo "<a href='#' class='goods'>讚</a>";
+            }
+            ?>
+            </td>
         </tr>
     <?php
     }
@@ -27,5 +33,16 @@
 <script>
     $(".title,.content").on("click",function(){
         $(this).parent().find(".short,.all").toggle()
+    })
+
+    $(".goods").on("click",function(){
+        switch($(this).text()){
+            case "讚":
+                $(this).text("收回讚");
+            break;
+            case "收回讚":
+                $(this).text("讚")
+            break;
+        }
     })
 </script>
